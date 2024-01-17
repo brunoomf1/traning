@@ -1,0 +1,17 @@
+.lastResult {
+  color: white;
+  padding: 3px;
+}
+
+.extra-space{
+  margin-top: 20px;
+}
+
+.output{
+    height: 85vh;
+    overflow: auto;
+}
+
+.footnote {
+   font-size: 0.8em;
+}
