@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- Importando a biblioteca Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>IMC</title>
+</head>
+
+<body>
+
+  <div class="p-3">
+  
+      <h2 class="rounded bg-primary p-2 text-white">Cálculo de IMC</h2>
+      <div class="form p-2">
+        <label for="hightField" >Digite a Altura: </label>
+        <input type="number" id="hightField" step="0.01" oninput="formatNumber(this)">
+        <label for="weight"> m</label>        
+      </div>
+      <div class="form p-2">
+        <label for="weightField">Digite o Peso: </label>
+        <input type="number" id="weightField">
+        <label for="weight"> kg </label>
+      </div>
+      <div>
+        <input type="submit" id ="sendSubmit" value="Enviar" class="sendSubmit">
+      </div>
+      <hr> <!-- Horizontal Rule --> 
+      <div class="resultParas pl-2 pr-2 extra-space" id="resultDiv">
+        <label id="imcLabel">Seu IMC é: </label>
+        <label id="imcField"></label>
+        <br>
+        <label id="classificationLabel">Classificação: </label>
+        <label id="classificationField"></label>
+      </div>
+      <div>
+        <input type="submit" value="Novo Cálculo" id ="restartSubmit" class="restartSubmit">
+      </div>
+      
+  </div>
+</body>
+
+<script src="script.js"></script>
+<!-- Scripts da biblioteca Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+</html>
