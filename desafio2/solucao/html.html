@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria de Imagens</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Adicione estilos CSS aqui se necessário */
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Galeria de Imagens</h1>
+  </header>
+
+  <div class="gallery img">
+    <ul id="imageList">
+      <li><img src="img/img1.jpg" alt="Imagem 1"></li>
+      <li><img src="img/img2.jpg" alt="Imagem 2"></li>
+      <li><img src="img/img3.jpg" alt="Imagem 3"></li>
+      <!-- Adicione mais imagens conforme necessário -->
+    </ul>
+  </div>
+
+  <div id="myModal" class="modal">
+    <span class="close-btn">&times;</span>
+    <button class="close-btn" id="closeModalBtn">Fechar</button>
+    <img id="modalImg" src="" alt="Imagem em destaque">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
