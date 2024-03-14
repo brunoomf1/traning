@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Cypress Playground - Talking About Testing</title>
+  </head>
+  <body>
+    <div>
+      <h1 id="title">🌲 Cypress Playground 🛝</h1>
+      <div id="visit" class="section">
+        <h2>
+          <pre>cy.visit()</pre>
+        </h2>
+        <p>When writing automated tests for web applications, the first step is to visit the URL of the application under test.</p>
+        <p>For that, Cypress offers the <a href="https://on.cypress.io/visit" target="_blank"><code>cy.visit()</code></a> command.</p>
+        <p>To visit a web page with Cypress, simply pass the desired URL as a string to the <code>cy.visit()</code> command.</p>
+        <p>For example: <code>cy.visit('https://google.com')</code>.</p>
+      </div>
+      <div id="click" class="section">
+        <h2>
+          <pre>.click()</pre>
+        </h2>
+        <p>One of the most common tasks in testing web applications is to click a button to submit a form (for example.)</p>
+        <p>For that, Cypress offers the <a href="https://on.cypress.io/click" target="_blank"><code>.click()</code></a> command.</p>
+        <p>To click on an element, you first have to get it, using the <a href="https://on.cypress.io/get" target="_blank"><code>cy.get()</code></a>command, for example.</p>
+        <p>After you get it, you can chain a <code>.click() to it.</code></p>
+        <p>For example: <code>cy.get('button[type="submit"]').click()</code>.</p>
+        <p>You could also get the element using the <a href="https://on.cypress.io/contains" target="_blank"><code>cy.contains()</code></a> command.</p>
+        <p>For example: <code>cy.contains('button', 'Subscribe').click()</code>.</p>
+        <div class="success">
+          <span id="success" style="display: none;">You've been successfully subscribed to our newsletter.</span>
+        </div>
+        <button type="submit">Subscribe</button>
+      </div>
+      <div id="type" class="section">
+        <h2>
+          <pre>.type()</pre>
+        </h2>
+        <p>Another common task in testing web applications is to type into text fields, such as a textarea.</p>
+        <p>For that, Cypress offers the <a href="https://on.cypress.io/type" target="_blank"><code>.type()</code></a> command.</p>
+        <p>Simply chain a <code>.type()</code>to the element you want to type into, passing to it the text you want typed, as a string.</p>
+        <p>For example: <code>cy.get('textarea').type('Cypress is awesome!')</code>.</p>
+        <label for="signature-textarea">Sign here</label>
+        <textarea id="signature-textarea" placeholder="Joe Doe"></textarea>
+        <p>Signature's preview:</p>
+        <em id="signature"></em>
+      </div>
+      <div id="check" class="section">
+        <h2>
+          <pre>.check() and .uncheck()</pre>
+        </h2>
+        <p>Sometimes, you need to check (or uncheck) a checkbox.</p>
+        <p>For that, Cypress offers the <a href="https://on.cypress.io/check" target="_blank"><code>.check()</code></a> and <a href="https://on.cypress.io/uncheck" target="_blank"><code>.uncheck()</code></a> commands.</p>
+        <p>Here's an example of checking a checkbox: <code>cy.get('input[type="checkbox"]').check()</code>.</p>
+        <p>And here's how you would uncheck it: <code>cy.get('input[type="checkbox"]').uncheck()</code>.</p>
+        <label for="signature-textarea-with-checkbox">Sign here</label>
+        <textarea id="signature-textarea-with-checkbox" placeholder="Jane Doe"></textarea>
+        <div>
+          <label for="signature-checkbox">Show signature's preview</label>
+          <input id="signature-checkbox" type="checkbox" />
+        </div>
+        <br>
+        <em id="signature-triggered-by-check"></em>
+      </div>
+      <div id="check-radio" class="section">
+        <h2>
+          <pre>cy.get('input[type="radio"]').check()</pre>
+        </h2>
+        <p>For radio input fields, you can also use the <code>.check()</code> command.</p>
+        <p>For example: <code>cy.get(input[type="radio"]).check()</code>.</p>
+        <label for="on">On</label>
+        <input id="on" type="radio" name="on-or-off" value="on" checked />
+        <label for="off">Off</label>
+        <input id="off" type="radio" name="on-or-off" value="off" />
+        <strong><p id="on-off">ON</p></strong>
+      </div>
+      <div id="select" class="section">
+        <h2>
+          <pre>.select()</pre>
+        </h2>
+        <p>Another element we usually need to intereact with in web apps is the dropdown select field.</p>
+        <p>For that, Cypress offers the <a href="https://on.cypress.io/select" target="_blank"><code>.select()</code></a> command.</p>
+        <p>Simply chain the <code>.select()</code>command to a <code>select</code>HTML element, then pass to it the option you want to select.</p>
+        <p>The option can be chosen via its <code>content</code>, <code>value</code>, or <code>index</code>.</p>
+        <p>Examples:</p>
+        <p>Selection via content: <code>cy.get('select').select('Basic')</code>.</p>
+        <p>Selection via value: <code>cy.get('select').select('standard')</code>.</p>
+        <p>Selection via index: <code>cy.get('select').select(3)</code>.</p>
+        <label for="selection-type">Select type</label>
+        <select name="selection-type" id="selection-type">
+          <option disabled selected>Select</option>
+          <option value="basic">Basic</option>
+          <option value="standard">Standard</option>
+          <option value="vip">VIP</option>
+        </select>
+        <p id="select-selection">You haven't selected a type yet.</p>
+        <br>
+        <p>You might also want to interect with multiple options select fields.</p>
+        <p>For that, pass to the <code>.select()</code> command an array of values.</p>
+        <p>For example: <code>cy.get('select[multiple]').select(['apple', 'cherry'])</code>.</p>
+        <label for="fruit">Select fruit</label>
+        <select name="fruit" id="fruit" multiple>
+          <option value="apple">Apple</option>
+          <option value="banana">Banana</option>
+          <option value="cherry">Cherry</option>
+          <option value="date">Date</option>
+          <option value="elderberry">Elderberry</option>
+        </select>
+        <p id="fruits-paragraph">You haven't selected any fruit yet.</p>
+      </div>
+      <div id="select-file" class="section">
+        <h2>
+          <pre>.selectFile()</pre>
+        </h2>
+        <p>To select a file into a input of type file, Cypress offers the <a href="https://on.cypress.io/selectfile" target="_blank"><code>.selectFile()</code></a> command.</p>
+        <p>Simply pass to it the relative path of the file you want to select, based on the <code>cypress.config.js</code> file.</p>
+        <p>For example: <code>cy.get('input[type="file"]').select('cypress/fixtures/example.json')</code>.</p>
+        <label for="file-upload">Attach a file</label>
+        <input id="file-upload" type="file" />
+        <p id="file"></p>
+      </div>
+      <div id="intercept" class="section">
+        <h2>
+          <pre>cy.intercept(...).as('alias')</pre>
+          <span>and</span>
+          <pre>cy.wait('@alias')</pre>
+        </h2>
+        <p>One of the most awesome features of Cypress, is it ability to "listen" to what's going on at the network level.</p>
+        <p>For that, Cyrpess offers the <a href="https://on.cypress.io/intercept" target="_blank"><code>cy.intercept()</code></a> command.</p>
+        <p>You can define a route you want Cypress to intercept, give it an alias (using the <a href="https://on.cypress.io/as" target="_blank"><code>.as('alias')</code></a> command), then you can run an action that triggers the request, and finally, wait for it before moving on, using <a href="https://on.cypress.io/wait" target="_blank"><code>cy.wait('@alias')</code></a>.</p>
+        <p>Here's a complete example:</p>
+        <code>cy.intercept('GET', 'https://api.example.com/todos/1').as('getTodo')</code>
+        <br>
+        <code>cy.contains('button', 'Get TODO').click() // this would trigger the above request.</code>
+        <br>
+        <code>cy.wait('@getTodo')</code>
+        <br>
+        <p>You could even overwrite the request's response, using a fixture.</p>
+        <p>For example:</p>
+        <code>cy.intercept('GET', 'https://api.example.com/todos/1', { fixture: 'todo' }).as('getTodo')</code>
+        <br>
+        <code>cy.contains('button', 'Get TODO').click() // this would trigger the above request, but instead of making a real API call, a static file defined instead of the <code>cypress/fixtures/</code> directory would be returned.</code>
+        <br>
+        <code>cy.wait('@getTodo')</code>
+        <p>With the <code>cy.intercept()</code> command, you could even simulate an API failure.</p>
+        <p>For example: <code>cy.intercept('GET', 'https://api.example.com/todos/1', { statusCode: 500 }).as('serverFailure')</code>.</p>
+        <p>Then, you could assert that it has really failed.</p>
+        <p>For example: <code>cy.wait('@serverFailure').its('response.statusCode').should('be.equal', 500)</code>.</p>
+        <p>And maybe, even assert that certain fallback element has been displayed.</p>
+        <p>For example: <code>cy.contains('.error', 'Oops, something went wrong.').should('be.visible')</code>.</p>
+        <p>Finally, with the <code>cy.intercept()</code>command, you could force a network error, to test how your web app would behave if there were no internet available, for instance.</p>
+        <p>For example: <code>cy.intercept('GET', 'https://api.example.com/todos/1', { forceNetworkError: true }).as('networkError')</code>.</p>
+        <p>Then, you could wait for such a failure.</p>
+        <p>For example: <code>cy.wait('@networkError')</code>.</p>
+        <p>And then, you could even assert that certain fallback element has been displayed.</p>
+        <p>For example: <code>cy.contains('.error', "Oops, it seems you don't have internet connection.").should('be.visible')</code>.</p>
+        <button>Get TODO</button>
+      </div>
+      <div id="request" class="section">
+        <h2>
+          <pre>cy.request()</pre>
+        </h2>
+        <p>Another great Cypress feature is the <a href="https://on.cypress.io/request" target="_blank"><code>cy.request()</code></a> command.</p>
+        <p>Differently than the <code>cy.intercept()</code> command (which "listens" to requests), with <code>cy.request()</code>, you can make an HTTP request, like you would with a tool like Postman.</p>
+        <p>For example: <code>cy.request('GET', 'https://api.example.com/todos/1')</code>.</p>
+        <p>After making the request, you could even run an assertion, to ensure it returned the correct status code.</p>
+        <p>For that, you could combine the <a href="https://on.cypress.io/its" target="_blank"><code>.its()</code></a> and <a href="https://on.cypress.io/should" target="_blank"><code>.should()</code></a> commands.</p>
+        <p>For example: <code>cy.request('GET', 'https://api.example.com/todos/1').its('status').should('be.equal', 200)</code>.</p>
+      </div>
+      <div id="input-range" class="section">
+        <h2>
+          <pre>.invoke().trigger()</pre>
+        </h2>
+        <p>Another element you might have to interact with when testing web apps is the input of type range.</p>
+        <p>To deal with such an element, you can combine two Cypress features.</p>
+        <p>You can use the <a href="https://on.cypress.io/invoke" target="_blank"><code>.invoke()</code></a> command to set the input's value.</p>
+        <p>Then, you can use the <a href="https://on.cypress.io/trigger" target="_blank"><code>.trigger()</code></a> command to trigger the value's change.</p>
+        <p>For example: <code>cy.get('input[type="range"]').invoke('val', 5).trigger('change')</code>.</p>
+        <label for="level">Level</label>
+        <input id="level" type="range" min="1" max="10" value="1">
+        <p id="level-paragraph"></p>
+      </div>
+      <div id="input-date" class="section">
+        <h2>
+          <pre>.type('yyyy-mm-dd').blur()</pre>
+        </h2>
+        <p>Another element you might have to interact with when testing web apps is the input of type date.</p>
+        <p>To deal with such an element, you can combine two Cypress features.</p>
+        <p>You can use the <code>.type()</code> command to set the input's value.</p>
+        <p>Then, you can use the <a href="https://on.cypress.io/blur" target="_blank"><code>.blur()</code></a> command to take the focus out of the element, for instance.</p>
+        <p>Note that the <code>.type()</code> command expects the date to be in the <code>yyyy-mm-dd</code> format.</p>
+        <p>For example: <code>cy.get('input[type="date"]').type('2024-01-16').blur()</code>.</p>
+        <label for="date">Select a date</label>
+        <input type="date" name="date" id="date">
+        <p id="date-paragraph"></p>
+      </div>
+    </div>
+    <div id="password-input" class="section">
+      <h2>
+        <pre>Cypress.env('secret')</pre>
+      </h2>
+      <p>Sometimes, when testing web apps, we need to input some sensitive data.</p>
+      <p>However, it's not recommended to version such data, or even let it leak, hardcoding it in the test file.</p>
+      <p>To deal with that, Cypress offers a few options.</p>
+      <p>First, you can create a file called <a href="https://docs.cypress.io/guides/guides/environment-variables#Option-2-cypressenvjson" target="_blank"><code>cypress.env.json</code></a> and add it to the <code>.gitignore</code> file, so it won't be versioned.</p>
+      <p>Then, you can use the <a href="https://docs.cypress.io/api/cypress-api/env" target="_blank"><code>Cypress.env()</code></a> command to retrieve information from such a file.</p>
+      <p>For example: <code>cy.get('input[type="password"]').type(Cypress.env('password'))</code>.</p>
+      <p>With the above code example, you'd retrieve the value defined for the <code>password</code> property of the <code>cypress.env.json</code> file.</p>
+      <p>Even so, with the above code example, although the password would not be hardcoded in the test file, it would still leak into the Cypress command logs.</p>
+      <p>To fix that, you could do this instead: <code>cy.get('input[type="password"]').type(Cypress.env('password'), { log: false })</code>.</p>
+      <p>Note that, as a second argument for the <code>.type()</code> command, I'm passing an object with the property <code>log</code> with the value of <code>false</code>.</p>
+      <p>This way, the sensitive data doesn't leak into the Cypress command logs since such a command won't even be logged.</p>
+      <label for="#password">Type your password</label>
+      <input type="password" name="" id="password">
+      <div>
+        <label for="show-password-checkbox">Show password</label>
+        <input id="show-password-checkbox" type="checkbox" />
+      </div>
+    </div>
+    <div id="should-have-length" class="section">
+      <h2>
+        <pre>.should('have.length', n)</pre>
+      </h2>
+      <p>One common challenge when testing web applications is to assert on the number of specific elements.</p>
+      <p>Imagine you have a unordered list, and you want to assert that it has a specific number of list items.</p>
+      <p>To deal with that, Cypress offers the <a href="https://docs.cypress.io/guides/references/assertions#Length" target="_blank"><code>.should('have.length', n)</code></a> assertion.</p>
+      <p>Here's how it works: <code>cy.get('ul li').should('have.length', 5)</code>.</p>
+      <p>This way, you can count how many elements were found for that specific selector, and assert against the number you expect them to be.</p>
+      <label for="animals">Animals</label>
+      <ul id="animals">
+        <li>Camel</li>
+        <li>Cat</li>
+        <li>Caterpilla</li>
+        <li>Cow</li>
+        <li>Dog</li>
+      </ul>
+    </div>
+    <div id="date-section" class="section">
+      <h2>
+        <pre>cy.clock()</pre>
+      </h2>
+      <p>Sometimes, web apps show dynamic data, such as the current date.</p>
+      <p>If you want to assert on such data, you would want to freeze the date so your tests can provide you with deterministic results.</p>
+      <p>For that, Cypress offers the <a href="https://on.cypress.io/clock" target="_blank"><code>cy.clock()</code></a> command.</p>
+      <p>For example:</p>
+      <code>beforeEach(() => {</code>
+      <br>
+      <code>&nbsp;&nbsp;const now = new Date(2024, 3, 15) // month is 0-indexed</code>
+      <br>
+      <code>&nbsp;&nbsp;cy.clock(now)</code>
+      <br>
+      <code>&nbsp;&nbsp;cy.visit('https://example.com')</code>
+      <br>
+      <code>})</code>
+      <br>
+      <p>Then, you could assert that the frozen date is displayed, for instance.</p>
+      <p>Like this: <code>cy.contains('p', '2024-04-15').should('be.visible')</code>.</p>
+      <p id="date-section-paragraph"></p>
+    </div>
+    <div id="copy-paste" class="section">
+      <h2>
+        <pre>.then()</pre>
+      </h2>
+      <p>Sometimes, you need to input the value of one element into another.</p>
+      <p>For that, Cypress offers the <a href="https://on.cypress.io/then" target="_blank"><code>.then()</code></a> command.</p>
+      <p>The <code>.then()</code> command enables you to work with the subject yielded from the previous command.</p>
+      <p>For example:</p>
+      <code>cy.get('#some-element')</code>
+      <br>
+      <code>&nbsp;&nbsp;.then(element => {</code>
+      <br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;const value = element[0].innerText</code>
+      <br>
+      <code>&nbsp;&nbsp;&nbsp;&nbsp;cy.get('input[type="text"]').type(value)</code>
+      <br>
+      <code>&nbsp;&nbsp;})</code>
+      <br>
+      <br>
+      <div>
+        <label for="timestamp">Your code is:</label>
+        <span id="timestamp"></span>
+      </div>
+      <div class="success" style="display: none;">
+        <span>Congrats! You've entered the correct code.</span>
+      </div>
+      <div class="error" style="display: none;">
+        <span>The provided code isn't correct. Please, try again.</span>
+      </div>
+      <form action="submit">
+        <label for="code">Type your code here:</label>
+        <input id="code" type="number">
+        <button>Submit</button>
+      </form>
+    </div>
+    <footer>
+      <p>This app was made with a lot of 💚 by <a href="https://walmyr.dev" target="_blank">Walmyr</a>.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
